@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>BunchOfFriends</title>
+        <h:outputStylesheet library="css" name="style.css"/>
+    </h:head>
+    <h:body>
+        <div class="top">
+            <h1>BunchOfFriends</h1>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><h:link class="#{view.viewId.contains('home') ? 'current' : 'other'}" value="Home" outcome="home"/></li>
+                <li><h:link class="#{view.viewId.contains('friend_list') ? 'current' : 'other'}" value="Friends" outcome="friend_list"/></li>
+                <li><h:link class="#{view.viewId.contains('posts_me') ? 'current' : 'other'}" value="Just Your Messages" outcome="posts_me"/></li>
+                <li><h:link class="#{view.viewId.contains('logout') ? 'current' : 'other'}" value="Logout" outcome="logout"/></li>
+            </ul>
+        </div>
+        <div class="content">
+            <ui:insert>
+                Page Content
+            </ui:insert>
+        </div>
+    </h:body>
+</html>
+

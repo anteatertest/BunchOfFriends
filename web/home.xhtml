@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view transient="true">
+        <ui:composition template="/WEB-INF/user_layout.xhtml">
+            <h:form>
+                <div class="status">
+                    <p>Welcome, <h:outputText escape="false" value="#{userController.user.fullName}"/></p>
+                    <p>How are you feeling? <h:inputText value="#{postController.message}"/><h:commandButton value="Post" action="#{postController.post}"/></p>
+                </div>
+                <div class="content">
+                    <p>Messages:</p>
+                    <ui:repeat var="post" value="#{postController.posts}">
+                        <p>
+                            <b><h:outputText escape="false" value="#{post.message}"/></b><br/>
+                            <i>Posted by: #{post.creator.fullName} on
+                                <h:outputText value="#{post.date}">
+                                    <f:convertDateTime pattern="dd MMMM yyyy, HH:mm:ss" timeZone="Australia/Sydney"/>
+                                </h:outputText>
+                            </i><br/>
+                            <h:outputText value="#{post.likes}"/> Likes <ui:fragment rendered="#{post.creator.id != userController.user.id}">(
+                            <h:link value="Like" outcome="like">
+                                <f:param name="post" value="#{post.id}"/>
+                                <f:param name="back" value="home"/>
+                            </h:link> )</ui:fragment>
+                        </p>
+                    </ui:repeat>
+                </div>
+            </h:form>
+        </ui:composition>
+    </f:view>
+</html>
+

@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view transient="true">
+        <ui:composition template="/WEB-INF/guest_layout.xhtml">
+            <h1>Sign-up</h1>
+            <h:form>
+                <p>
+                    <label>Username:
+                        <h:inputText value="#{userController.username}"/>
+                    </label>
+                </p>
+                <p>
+                    <label>Password:
+                        <h:inputSecret value="#{userController.password}"/>
+                    </label>
+                </p>
+                <p>
+                    <label>Full Name:
+                        <h:inputText value="#{userController.fullName}"/>
+                    </label>
+                </p>
+                <p>
+                    <h:commandButton value="Sign Up Now" action="#{userController.signup}"/>
+                </p>
+            </h:form>
+        </ui:composition>
+    </f:view>
+</html>
+
